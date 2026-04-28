@@ -1,6 +1,8 @@
 import pytest
 
+
 MY_NAME = "Ернест Стоянович"
+
 
 class TestAuthors:
     def test_get_authors_empty(self, client):

@@ -29,7 +29,7 @@ class TestBooks:
     def test_create_book_with_author(self, client):
         author = client.post("/api/authors", json={"name": "Ернест стоянович"}).get_json()
         response = client.post("/api/books", json={
-            "title": "Lisova Pisnia",
+            "title": "knyga2",
             "author_id": author["id"],
             "created_by": MY_NAME
         })
@@ -103,7 +103,7 @@ class TestBooksFilter:
         client.post("/api/books", json={"title": "knyga", "created_by": MY_NAME})
         client.post("/api/books", json={"title": "knyga2", "created_by": MY_NAME})
         
-        response = client.get("/api/books?q=knyga")
+        response = client.get("/api/books?q=nyga")
         assert len(response.get_json()) == 1
         assert response.get_json()[0]["title"] == "knyga"
 
