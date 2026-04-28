@@ -1,7 +1,5 @@
 import pytest
-
-MY_NAME = "Іван Іваненко"  # ЗАМІНІТЬ НА ВАШЕ ІМ'Я ТА ПРІЗВИЩЕ
-
+MY_NAME = "Ернест Стоянович" 
 class TestBooks:
     def test_get_books_empty(self, client):
         response = client.get("/api/books")
@@ -71,6 +69,14 @@ class TestBooks:
         
         get_response = client.get(f"/api/books/{book['id']}")
         assert get_response.status_code == 404
+
+    def test_create_book_default_status(self, client):
+        """Книга створюється зі статусом за замовчуванням"""
+        response = client.post("/api/books", json={
+            "title": "Test Book PR",
+            "created_by": "Ернест Стоянович",
+        })
+        assert response.status_code == 201
 
 class TestBooksFilter:
     def test_filter_by_genre(self, client):
