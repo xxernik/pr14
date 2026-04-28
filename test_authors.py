@@ -2,7 +2,7 @@ import pytest
 
 
 MY_NAME = "Ернест Стоянович"
-test-ci-pr
+
 
 class TestAuthors:
     def test_get_authors_empty(self, client):
